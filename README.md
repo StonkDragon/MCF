@@ -31,3 +31,16 @@ You can also unset a Label later using `#!UNSET <label>`
 Global labels allow you to easily manage a huge amount of Commands across multiple files.
 Global labels are defined as `#!GLOBALDEF <label>` and used the same way normal Labels are.
 
+# Running
+
+Put the jar File in the root directory of your Datapack (The folder containing pack.mcmeta).
+
+The jar File accepts following Arguments:
+
+`-c - Compile Datapack`
+
+`-d - Create new .mcf Files from Datapack`
+
+`-f <file> - Create new .mcf File from <file>`
+
+Running without any arguments defaults to -c
