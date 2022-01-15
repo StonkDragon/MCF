@@ -57,8 +57,6 @@ public class PreProcessor {
                     def = keys[1];
                 }
 
-                System.err.println(keys[0]);
-
                 switch (keys[0]) {
                     case "GLOBALDEF":
                         this.globalDefines.add(def);
