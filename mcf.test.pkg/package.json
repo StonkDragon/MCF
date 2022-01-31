@@ -1,0 +1,8 @@
+{
+    "namespace": "mcf.test",
+    "commandAliases": {
+        "test": [
+            "function mcf.test:test"
+        ]
+    }
+}
