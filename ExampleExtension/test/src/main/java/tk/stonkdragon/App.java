@@ -13,6 +13,7 @@ public class App
 {
     public static void main( String[] args ) throws IOException
     {
+        // Prints every line number:
         Logger.logMsg("This is a test for line " + args[2]);
     }
 }
