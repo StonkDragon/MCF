@@ -18,7 +18,7 @@ import java.util.Locale;
 import tk.stonkdragon.mcf.App;
 import tk.stonkdragon.mcf.exeptions.PreProcessorException;
 import tk.stonkdragon.mcf.exeptions.UsingExeption;
-import tk.stonkdragon.mcf.ext.Extentions;
+import tk.stonkdragon.mcf.ext.Extensions;
 import tk.stonkdragon.mcf.using.Using;
 import tk.stonkdragon.mcf.utils.Ignores;
 import tk.stonkdragon.mcf.utils.Rand;
@@ -50,7 +50,7 @@ public class PreProcessor {
 
         // loop over all of them
         for (File file : files) {
-
+            
             // if is dir check that
             if (file.isDirectory())
                 check(file);
@@ -131,8 +131,6 @@ public class PreProcessor {
     private void readFile(File file) throws IOException, FileNotFoundException, PreProcessorException, UsingExeption {
         
         // create all Objects used
-        // file reader
-        BufferedReader br = new BufferedReader(new FileReader(file));
         // line
         String line;
         String repl;
@@ -176,29 +174,28 @@ public class PreProcessor {
             outfile.delete();
         new File(outfile.getParent()).mkdirs();
 
-        // create filewriter for outfile
+
+        // extensions run before anything else
+        // this loops over every extension and runs it
+        for (File f : Extensions.getExtensions()) {
+            if (f.getName().endsWith(".jar")) {
+                // run extension with source file, target file and current line index
+                new Extensions(f).runExtension(file.getAbsolutePath() + " " + outfile.getAbsolutePath());
+            }
+        }
+
+        // create filereader and filewriter
+        BufferedReader br = new BufferedReader(new FileReader(file));
         BufferedWriter bw = new BufferedWriter(new FileWriter(outfile));
 
         // set compilation to true
         this.shouldCompile = true;
-
-        // define line number
-        int linecount = 1;
 
         // loop over every line in the file
         while ((line = br.readLine()) != null) {
             
             // trim the line
             line = line.trim();
-
-            // extentions run before anything else
-            // this loops over every file
-            for (File f : Extentions.getExtentions()) {
-                if (f.getName().endsWith(".jar")) {
-                    // run extention with source file, target file and current line index
-                    new Extentions(f).runExtention(file.getAbsolutePath() + " " + outfile.getAbsolutePath() + " " + linecount);
-                }
-            }
 
             // check if the line starts with the mcf prefix "#!"
             if (line.startsWith("#!")) {
@@ -317,7 +314,6 @@ public class PreProcessor {
             // if not
             } else {
 
-                
                 // string to store the current lines command in
                 String cmd;
                 
@@ -382,8 +378,6 @@ public class PreProcessor {
                     }
                 }
             }
-            // increment linecounter
-            linecount++;
         }
 
         // close the reader and writer
@@ -458,7 +452,6 @@ public class PreProcessor {
             // generate a random string based on the function name
             String r = Rand.randomString(outf);
 
-            // TODO: check if this is needed
             // new stringbuilder
             // used to replace the last occurence of the original name
             // source: https://stackoverflow.com/questions/23325800/replace-the-last-occurrence-of-a-string-in-another-string/23325828

@@ -17,7 +17,7 @@ public class Config {
     public static File CONFIG;
 
     /**
-     * {@code generateConfig} generates a new Config file for your Extention
+     * {@code generateConfig} generates a new Config file for your Extension
      */
     public static void generateConfig() {
         String jarPath = "";
@@ -36,7 +36,7 @@ public class Config {
     }
 
     /**
-     * {@code setConfig} writes {@code JSONObject j} to your Extention's Config file. 
+     * {@code setConfig} writes {@code JSONObject j} to your Extension's Config file. 
      * {@code j} must be of Type {@code org.json.JSONObject}
      */
     public static void setConfig(JSONObject j) {
@@ -48,7 +48,7 @@ public class Config {
     }
 
     /**
-     * {@code getConfig} returns a {@code JSONObject} that contains the Contents of your Extention's Config file
+     * {@code getConfig} returns a {@code JSONObject} that contains the Contents of your Extension's Config file
      * @return JSONObject
      */
     public static JSONObject getConfig() {

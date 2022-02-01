@@ -25,7 +25,7 @@ public class App extends Thread
     public static final boolean ISWINDOWS = System.getProperty("os.name").toLowerCase(Locale.ENGLISH).startsWith("windows");
     public static final File CONFIG = new File(System.getProperty("user.home") + "/MCF");
     public static final File SETTINGS = new File(CONFIG.getAbsolutePath()  + "/settings.json");
-    public static final File EXTENTIONS = new File(CONFIG.getAbsolutePath()  + "/extentions");
+    public static final File EXTENSIONS = new File(CONFIG.getAbsolutePath()  + "/extensions");
     public static final File PACKAGES = new File(CONFIG.getAbsolutePath()  + "/packages");
     public static final File IGNORED = new File(CONFIG.getAbsolutePath() + "/ignored.txt");
 
@@ -157,9 +157,9 @@ public class App extends Thread
         if (!PACKAGES.exists())
             PACKAGES.mkdirs();
 
-        // extentions
-        if (!EXTENTIONS.exists())
-            EXTENTIONS.mkdirs();
+        // extensions
+        if (!EXTENSIONS.exists())
+            EXTENSIONS.mkdirs();
 
         // check if the ignore file exists
         if (!IGNORED.exists()) {
@@ -202,12 +202,12 @@ public class App extends Thread
             )
         );
 
-        // extentions
-        j.put("extentions", new JSONArray());
+        // extensions
+        j.put("extensions", new JSONArray());
         // add example repo
-        j.getJSONArray("extentions").put(
+        j.getJSONArray("extensions").put(
             new JSONObject(
-                "{\"url\": \"https://example.org/example.jar\", \"file\": \"example_extention.jar\"}"
+                "{\"url\": \"https://example.org/example.jar\", \"file\": \"example_extension.jar\"}"
             )
         );
 

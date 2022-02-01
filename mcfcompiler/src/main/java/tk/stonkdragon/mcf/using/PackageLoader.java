@@ -21,7 +21,7 @@ public class PackageLoader extends Thread {
     @Override
     public void run() {
         try {
-            this.downloadExtentions();
+            this.downloadExtensions();
             this.downloadPackages();
         } catch (JSONException | IOException e) {
             e.printStackTrace();
@@ -67,19 +67,19 @@ public class PackageLoader extends Thread {
         }
     }
 
-    private void downloadExtentions() throws JSONException, IOException {
+    private void downloadExtensions() throws JSONException, IOException {
         
-        // get all extentions and loop over them
-        JSONArray exts = JSONConv.getData(App.SETTINGS).getJSONArray("extentions");
+        // get all extensions and loop over them
+        JSONArray exts = JSONConv.getData(App.SETTINGS).getJSONArray("extensions");
         for (int i = 0; i < exts.length(); i++) {
         
-            // specify the current extention
+            // specify the current extension
             JSONObject ext = exts.getJSONObject(i);
             
-            // check if current extention is example entry
-            if (!ext.getString("file").contains("example_extention")) {
+            // check if current extension is example entry
+            if (!ext.getString("file").contains("example_extension")) {
             
-                // download extention
+                // download extension
                 // File downloader from https://stackoverflow.com/questions/18872611/download-file-from-server-in-java
                 try {
                     FileUtils.copyURLToFile(
@@ -89,7 +89,7 @@ public class PackageLoader extends Thread {
                         new File(App.PACKAGES + File.pathSeparator + ext.getString("file"))
                     );
                 } catch (JSONException | IOException e) {
-                    System.err.println("Unable to download Extention: " + ext.getString("file"));
+                    System.err.println("Unable to download Extension: " + ext.getString("file"));
                     return;
                 }
             }
