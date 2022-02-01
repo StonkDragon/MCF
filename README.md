@@ -51,7 +51,7 @@ In it you will also find 2 Lists:
 
 These lists already have example Values to help you understand how they work
 
-- Extensions (`extentions`)
+- Extensions
 
 On Program Start, MCF will download all Extensions in this list.
 I am going to talk about Extensions later.
@@ -77,12 +77,11 @@ How a Package is structured can be seen at [https://github.com/StonkDragon/MCF/t
 
 # Extensions
 
-Extensions are `.jar` Files that are run for every line in every file before any preprocessing happened.
+Extensions are `.jar` Files that are run for every file before any preprocessing happens.
 They are called with the following arguments:
 
 - Source File
 - Destination File
-- Current line
 
 Extensions should make use of `mcf-api.jar` which contains some Functions for editing Files on-the-fly
 When logging in an Extension, you should use the `Logger`-Class
