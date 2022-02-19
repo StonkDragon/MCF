@@ -127,7 +127,7 @@ This List contains all scores that should NOT be obfuscated. Scoreboards that ar
 
 # Running
 
-Put the jar File in the root directory of your Datapack (The folder containing pack.mcmeta).
+Put the jar File in the root directory of your Datapack (The folder containing your src (and target) folders).
 
 Then open a new Command Prompt or Terminal and enter following Command: `java -jar mcfunction-compiler.java <args>`
 Replace <args> with one of the following:
